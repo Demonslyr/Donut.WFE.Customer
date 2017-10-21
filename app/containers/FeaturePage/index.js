@@ -7,6 +7,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 
+import Button from 'react-bootstrap/lib/Button';
 import H1 from 'components/H1';
 import messages from './messages';
 import List from './List';
@@ -21,6 +22,10 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
     return false;
   }
 
+  onButtonClick = () => {
+    alert('lololol');// eslint-disable-line
+  }
+
   render() {
     return (
       <div>
@@ -28,6 +33,12 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
           <title>Feature Pooge</title>
           <meta name="description" content="Feature page of React.js Boilerplate application" />
         </Helmet>
+        <Button
+          bsStyle="primary"
+          onClick={this.onButtonClick}
+        >
+          Primary Press
+        </Button>
         <H1>
           <FormattedMessage {...messages.header} />
         </H1>
