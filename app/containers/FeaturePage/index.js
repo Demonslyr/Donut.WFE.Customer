@@ -8,13 +8,22 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 
 import Button from 'react-bootstrap/lib/Button';
+
 import H1 from 'components/H1';
 import messages from './messages';
 import List from './List';
 import ListItem from './ListItem';
 import ListItemTitle from './ListItemTitle';
 
+import TwoButtonBox from '../../components/TwoButtonBox/TwoButtonBox';
+
 export default class FeaturePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props);
+    this.state = {
+      timesClicked: 0,
+    };
+  }
 
   // Since state and props are static,
   // there's no need to re-render this component
@@ -26,11 +35,17 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
     alert('lololol');// eslint-disable-line
   }
 
+  onClickFunctionToPassIn = () => {
+    let { timesClicked } = this.state;
+    timesClicked += 1;
+    this.setState({ timesClicked });
+  }
+
   render() {
     return (
       <div>
         <Helmet>
-          <title>Feature Pooge</title>
+          <title>Feature Page</title>
           <meta name="description" content="Feature page of React.js Boilerplate application" />
         </Helmet>
         <Button
@@ -39,6 +54,9 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
         >
           Primary Press
         </Button>
+        <TwoButtonBox
+          andrewsFunction={this.onClickFunctionToPassIn}
+        />
         <H1>
           <FormattedMessage {...messages.header} />
         </H1>
